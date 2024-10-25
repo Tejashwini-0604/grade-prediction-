@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Prediction</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef2f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        
+        label {
+            display: block;
+            font-weight: 600;
+            color: #555;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4a90e2;
+        }
+
+        
+        button {
+            background-color: #4a90e2;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #3d7ec4;
+        }
+
+        
+        .result {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #333;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Student Information for Grade Prediction</h2>
+        <form action="/predict" method="post">
+            <label>Age (15-18):</label>
+            <input type="text" name="Age" placeholder="e.g., 16">
+
+            <label>Gender (0 = Female, 1 = Male):</label>
+            <input type="text" name="Gender" placeholder="e.g., 1">
+
+            <label>Ethnicity (0-3):</label>
+            <input type="text" name="Ethnicity" placeholder="e.g., 2">
+
+            <label>Parental Education (0-4):</label>
+            <input type="text" name="ParentalEducation" placeholder="e.g., 2">
+
+            <label>Weekly Study Time (decimal):</label>
+            <input type="text" name="StudyTimeWeekly" placeholder="e.g., 10.5">
+
+            <label>Number of Absences (0-30):</label>
+            <input type="text" name="Absences" placeholder="e.g., 5">
+
+            <label>Tutoring (0 = No, 1 = Yes):</label>
+            <input type="text" name="Tutoring" placeholder="e.g., 1">
+
+            <label>Parental Support (0-4):</label>
+            <input type="text" name="ParentalSupport" placeholder="e.g., 3">
+
+            <label>Extracurricular (0 = No, 1 = Yes):</label>
+            <input type="text" name="Extracurricular" placeholder="e.g., 0">
+
+            <label>Sports (0 = No, 1 = Yes):</label>
+            <input type="text" name="Sports" placeholder="e.g., 1">
+
+            <label>Music (0 = No, 1 = Yes):</label>
+            <input type="text" name="Music" placeholder="e.g., 1">
+
+            <label>Volunteering (0 = No, 1 = Yes):</label>
+            <input type="text" name="Volunteering" placeholder="e.g., 0">
+
+            <label>GPA (0.0 - 4.0):</label>
+            <input type="text" name="GPA" placeholder="e.g., 3.5">
+
+            <button type="submit">Predict Grade</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
